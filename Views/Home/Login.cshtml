@@ -1,0 +1,32 @@
+﻿@model ProjMVC.ViewModels.Home.LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset>
+    <legend>Login</legend>
+    <form action="/Home/Login" method="post">
+        <div class="grid">
+            <input type="hidden" name="grant_type" value="password"/>
+            <div class="row">
+                <div class="col-1">Username:</div>
+                <div class="col-2">@Html.TextBoxFor(m => m.username)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.username)</div>
+            </div>
+            <div class="row">
+                <div class="col-1">Password:</div>
+                <div class="col-2">@Html.PasswordFor(m => m.password)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.password)</div>
+            </div>
+            <div class="row">
+                <div class="col-3">@Html.ValidationMessage("AuthenticationFailed")</div>
+            </div>
+            <div class="row">
+                <div class="col-3"><input type="submit" value="Login" /></div>
+            </div>
+        </div>
+    </form>
+</fieldset>
+

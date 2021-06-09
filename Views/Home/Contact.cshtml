@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProjMVC.ViewModels.UserVM>
+@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+@using (Html.BeginForm("Contact", "Home", FormMethod.Get))
+{
+    @Html.TextBox("search")
+    <input type="submit" value="search" />
+
+}
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Dob</th>
+            <th>id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                No User with name like that
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+    <tr>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @item.City
+        </td>
+        <td>
+            @item.DOB
+        </td>
+        <td>
+            <a href="/Home/About?id=@item.Id">Playlists</a>
+        </td>
+    </tr>
+            }
+        }
+    </tbody>
+</table>
